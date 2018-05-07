@@ -1,0 +1,16 @@
+\@doanenote {1}
+macro:->This
+footnote
+appears
+here
+as
+an
+endnote
+and
+could
+be
+avoided
+in
+this
+case.
+\@endanenote 
