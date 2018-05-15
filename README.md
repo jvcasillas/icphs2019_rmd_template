@@ -24,3 +24,5 @@ matter at the top of `master.Rmd`.
 - The `icphs2019.sty` style file is located in `includes/tex/`. You probably 
 should avoid modifying this in order to keep the correct ICPhS format (unless 
 you really know what you are doing)
+- When you knit the `master.Rmd` file it will produce `master.tex`, just in case 
+the .tex file is needed for submission/publication/etc.
