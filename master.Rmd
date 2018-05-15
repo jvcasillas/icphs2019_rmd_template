@@ -12,6 +12,7 @@ output:
     includes:
       before_body: includes/tex/doc_prefix.tex
       in_header: includes/tex/header.tex
+    keep_tex: yes
     number_sections: yes
 bibliography: includes/bib/icphs2019.bib
 ---
