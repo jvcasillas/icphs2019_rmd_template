@@ -16,8 +16,6 @@ output:
 bibliography: includes/bib/icphs2019.bib
 ---
 
-
-
 \section{Introduction}
 
 The following rules apply to all submitted papers:
@@ -248,7 +246,8 @@ anonymous as possible. As an example: do not write "In our previous study [7]
 we could show\ldots" but "As shown in [7]\ldots". Or refer to your own 
 published or otherwise widely known work, and to that of the other authors, 
 in the "Julius Caesar style", i.e. in the third person (for example: his 
-work, her work, their work). Reference as "anonymous" only work that you or the other authors have submitted for publication, but which has not yet been 
+work, her work, their work). Reference as "anonymous" only work that you or 
+the other authors have submitted for publication, but which has not yet been 
 published, e.g. [8].
 
 Please make sure that no author details appear in the Document Properties of 
@@ -273,7 +272,8 @@ name(s) (cf. the examples \cite{Beattie/etal:1982} and
 
 Contributions to volumes, e.g. \cite{Stevens:1999}, follow the convention 
 that the title of the volume is in italics, but not the title of the 
-contribution. The book editors appear before the book title. The page numbers are at the end.
+contribution. The book editors appear before the book title. The page numbers 
+are at the end.
 
 Journal articles should be handled in the same way as contributions to 
 volumes except that the title of the journal is in italics and that the 
@@ -302,9 +302,10 @@ R scripts can be loaded as well:
 source("./includes/scripts/analysis.R")
 ```
 
-Which means you have access to any objects assigned in the script: 
+Which means you have access to any objects assigned in the script, like Figure 
+\ref{fig:ex_plot}: 
 
-```{r, 'ex_plot', fig.align='center', fig.width=3, fig.height=2.75} 
+```{r, 'ex_plot', fig.align='center', fig.width=2.75, fig.height=1.5, fig.cap="This is a figure caption.", fig.pos='h', fig.lp='fig:'} 
 cars_plot
 ```
 
