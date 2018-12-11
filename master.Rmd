@@ -17,6 +17,18 @@ output:
 bibliography: includes/bib/icphs2019.bib
 ---
 
+```{r, 'setup', include=FALSE}
+library(knitr)
+f <- function(x, options) {
+  lab <- paste0(options$fig.lp, options$label)
+  paste(
+        "\\begin{figure}[!h]\n\\caption{", options$fig.cap.top, "}\\label{", lab,"}\n", 
+        hook_plot_tex(x, options), 
+        "\\end{figure}\n\n", sep = "")
+}
+knit_hooks$set(plot = f)
+```
+
 \section{Introduction}
 
 The following rules apply to all submitted papers:
@@ -306,7 +318,7 @@ source("./includes/scripts/analysis.R")
 Which means you have access to any objects assigned in the script, like Figure 
 \ref{fig:ex_plot}: 
 
-```{r, 'ex_plot', fig.align='center', fig.width=2.75, fig.height=1.5, fig.cap="This is a figure caption.", fig.pos='h', fig.lp='fig:'} 
+```{r, 'ex_plot', fig.align='center', fig.width=2.75, fig.height=1.5, fig.cap.top="This is a figure caption.", fig.pos='h', fig.lp='fig:'} 
 cars_plot
 ```
 
