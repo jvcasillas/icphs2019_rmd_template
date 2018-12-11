@@ -26,3 +26,5 @@ should avoid modifying this in order to keep the correct ICPhS format (unless
 you really know what you are doing)
 - When you knit the `master.Rmd` file it will produce `master.tex`, just in case 
 the .tex file is needed for submission/publication/etc.
+- If using `knitr` chunks to produce figures, use the option `fig.cap.top` to 
+keep figure captions above the plots
