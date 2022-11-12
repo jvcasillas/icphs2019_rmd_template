@@ -1,5 +1,7 @@
 # ICPhS 2019 RMarkdown template
 
+**UPDATE**: 2023 template available here: https://github.com/jvcasillas/icphs2023_rmd_template
+
 ## About
 
 This is an RMarkdown version of the ICPhS LaTeX template. It is, as far as I 
