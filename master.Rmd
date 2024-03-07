@@ -3,9 +3,7 @@ documentclass: article
 classoption: [a4paper,11pt,twocolumn]
 subparagraph: yes
 header-includes:
-   - \usepackage[latin1]{inputenc}
    - \usepackage[T1]{fontenc}
-   - \usepackage[leqno,fleqn]{amsmath}
 output:
   pdf_document:
     highlight: zenburn

@@ -1,32 +1,43 @@
-\documentclass[a4paper,11pt,twocolumn]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+  11pt,
+  twocolumn]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -67,7 +78,7 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -76,41 +87,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\newcommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{}
-    \pretitle{\vspace{\droptitle}}
-  \posttitle{}
-    \author{}
-    \preauthor{}\postauthor{}
-    \date{}
-    \predate{}\postdate{}
-  
 %------------------------------------------------------------------------------%
 % PAPER TEMPLATE FOR ICPHS 2019 MELBOURNE                                      %
 %                                                                              %
@@ -133,7 +117,7 @@
 \usepackage{tipa}
 
 % Links and urls must be black
-\hypersetup{urlcolor=black, citecolor=black, linkcolor=black}
+% \hypersetup{urlcolor=black, citecolor=black, linkcolor=black}
 
 
 % Packages removed from icphs2019.sty because of conflicts
@@ -141,6 +125,19 @@
 % \usepackage[latin1]{inputenc}
 % \usepackage[T1]{fontenc}
 % \usepackage[leqno,fleqn]{amsmath}
+\usepackage[T1]{fontenc}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
 
 \begin{document}
 
@@ -166,6 +163,7 @@ given out at the conference.
 
 \keywords{There is space for up to five self-selected keywords (maximally two 
 lines).}
+
 
 \section{Introduction}
 
@@ -329,7 +327,7 @@ Links to URLs or email addresses should be formatted as normal text,
 \textit{not} as hyperlinks and not blue or underlined etc. Usually
 hyperlinks to web pages are listed in the references section. If
 required, line breaks can be placed within URLs after slashes or dashes
-(cf. \cite{IPA-SIL, IPA-KEYBOARD}), but doublecheck that no hyphens are
+(cf.~\cite{IPA-SIL, IPA-KEYBOARD}), but doublecheck that no hyphens are
 inserted.
 
 \subsection{Footnotes and endnotes}
@@ -384,7 +382,7 @@ widely known work, and to that of the other authors, in the ``Julius
 Caesar style'', i.e.~in the third person (for example: his work, her
 work, their work). Reference as ``anonymous'' only work that you or the
 other authors have submitted for publication, but which has not yet been
-published, e.g. {[}8{]}.
+published, e.g.~{[}8{]}.
 
 Please make sure that no author details appear in the Document
 Properties of the PDF file.
@@ -405,7 +403,7 @@ name(s) (cf.~the examples \cite{Beattie/etal:1982} and
 \cite{Peterson/Barney:1952}). Ampersands ``\&'' and ``and'' are not
 needed.
 
-Contributions to volumes, e.g. \cite{Stevens:1999}, follow the
+Contributions to volumes, e.g.~\cite{Stevens:1999}, follow the
 convention that the title of the volume is in italics, but not the title
 of the contribution. The book editors appear before the book title. The
 page numbers are at the end.
@@ -413,7 +411,7 @@ page numbers are at the end.
 Journal articles should be handled in the same way as contributions to
 volumes except that the title of the journal is in italics and that the
 editors are not listed. Longer names of well-known journals can be
-abbreviated, e.g. \cite{Peterson/Barney:1952}. Articles in conference
+abbreviated, e.g.~\cite{Peterson/Barney:1952}. Articles in conference
 proceedings such as \cite{Ladefoged:2003} are referenced in the same way
 as journal articles. The word \textit{proceedings} can be abbreviated
 and the location should be mentioned after the name of the conference.
@@ -425,7 +423,7 @@ You can use knitr code chunks like in any .Rmd document:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{2}
+\DecValTok{2} \SpecialCharTok{+} \DecValTok{2}
 \end{Highlighting}
 \end{Shaded}
 
@@ -439,7 +437,7 @@ R scripts can be loaded as well:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{source}\NormalTok{(}\StringTok{"./includes/scripts/analysis.R"}\NormalTok{)}
+\FunctionTok{source}\NormalTok{(}\StringTok{"./includes/scripts/analysis.R"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -448,9 +446,13 @@ Figure \ref{fig:ex_plot}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cars_plot}
+\NormalTok{cars\_plot}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula = 'y ~ x'
+\end{verbatim}
 
 \begin{figure}[!h]
 \caption{This is a figure caption.}\label{fig:ex_plot}
@@ -464,6 +466,5 @@ Figure \ref{fig:ex_plot}:
 \bibliography{./includes/bib/icphs2019.bib}
 
 \theendnotes
-
 
 \end{document}
